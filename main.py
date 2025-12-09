@@ -34,5 +34,27 @@ def main():
     student1.show_courses()
     student2.show_courses()
 
+    print("\n6. Использование алгоритмов:")
+
+    from algorithms import sort_courses_by_price, calculate_average_price
+    all_courses = [python_course, web_course, data_course]
+    courses_copy = all_courses.copy()
+    sorted_courses = sort_courses_by_price(courses_copy)
+
+    print("Курсы отсортированы по цене от дешёвых к дорогим")
+    for course in sorted_courses:
+        print(f" {course.title} {course.price}P")
+
+    avg_price = calculate_average_price(all_courses)
+    print(f"\nСредняя цена курса {avg_price:.0f}P")
+
+    from algorithms import check_course_availability
+
+    print("\nДоступность курсов макс 30 студентов")
+    for course in all_courses:
+        available = check_course_availability(course)
+        status = " Свободные места" if available else " Заполнен"
+        print(f" {course.title} {status}")
+
 if __name__ == "__main__":
     main()
